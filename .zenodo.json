@@ -1,0 +1,10 @@
+{
+  "title": "Proof of Dhar's Minimal Sand Conjecture for the Manna Sandpile",
+  "upload_type": "software",
+  "description": "LaTeX source, figures and verification programs for the paper Proof of Dhar's Minimal Sand Conjecture for the Manna Sandpile. Every recurrent configuration of Manna's stochastic sandpile on an l x m rectangle has at least ceil((l-1)(m-1)/2) grains, as Dhar conjectured in 1999; in d dimensions the bound ceil(prod(l_i-1)/2^(d-1)) is exact when at least d-1 sides are odd.",
+  "creators": [
+    {"name": "Bhattacharjee, Deep", "orcid": "0000-0003-0466-750X"}
+  ],
+  "license": "MIT",
+  "keywords": ["Manna sandpile", "recurrent configurations", "self-organized criticality"]
+}
