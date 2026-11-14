@@ -70,7 +70,7 @@ function check(ok, msg)
 end
 
 println("Exhaustive recurrent sets on boxes")
-for dims in ([2,2],[2,3],[2,4],[2,5],[3,3],[3,4],[3,5],[4,4],[2,2,2],[3,2,2],[4,2,2],[3,3,2])
+for dims in ([2,2],[2,3],[2,4],[2,5],[3,3],[3,4],[3,5],[4,4],[2,2,2],[3,2,2],[4,2,2])
     g = geo(dims); R = recurrent_set(g)
     mn = minimum(count_ones, R)
     @printf("  %-10s recurrent %6d of %6d   min grains %d   G = %d\n", join(dims, "x"), length(R), 2^g.n, mn, G(dims)); flush(stdout)
