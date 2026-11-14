@@ -1,10 +1,10 @@
 cff-version: 1.2.0
-message: "If you use this work, please cite it as below."
-title: "Proof of Dhar's Minimal Sand Conjecture for the Manna Sandpile"
+message: "If you use this software, please cite it as below."
+title: "Minimal Sand in Manna's Sandpile and Exact Relaxation of the Oslo Rice Pile: Lean 4 certificate and programs"
+type: software
 authors:
   - family-names: Bhattacharjee
     given-names: Deep
     orcid: "https://orcid.org/0000-0003-0466-750X"
 license: MIT
 repository-code: "https://github.com/creelie/eno-2"
-doi: "10.5281/zenodo.24124285"
