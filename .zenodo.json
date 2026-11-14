@@ -1,10 +1,11 @@
 {
-  "title": "Proof of Dhar's Minimal Sand Conjecture for the Manna Sandpile",
+  "title": "Minimal Sand in Manna's Sandpile and Exact Relaxation of the Oslo Rice Pile: Lean 4 certificate and programs",
   "upload_type": "software",
-  "description": "LaTeX source, figures and verification programs for the paper Proof of Dhar's Minimal Sand Conjecture for the Manna Sandpile. Every recurrent configuration of Manna's stochastic sandpile on an l x m rectangle has at least ceil((l-1)(m-1)/2) grains, as Dhar conjectured in 1999; in d dimensions the bound ceil(prod(l_i-1)/2^(d-1)) is exact when at least d-1 sides are odd.",
+  "access_right": "open",
+  "description": "Lean 4 certificate, Julia programs and Python scripts that check the finite statements of the paper Minimal Sand in Manna's Sandpile and Exact Relaxation of the Oslo Rice Pile.",
   "creators": [
     {"name": "Bhattacharjee, Deep", "orcid": "0000-0003-0466-750X"}
   ],
   "license": "MIT",
-  "keywords": ["Manna sandpile", "recurrent configurations", "self-organized criticality"]
+  "keywords": ["Manna sandpile", "Oslo rice pile", "abelian networks"]
 }
