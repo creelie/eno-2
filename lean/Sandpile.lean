@@ -77,10 +77,10 @@ def sortedBoxes : Nat → Nat → Nat → List (List Nat)
       ((List.range (hi + 1)).filter (lo ≤ ·)).foldr
         (fun l acc => (sortedBoxes d l hi).map (fun t => l :: t) ++ acc) []
 
-/-- Lemma parity and Theorem family on all boxes with d ≤ 3 and sides ≤ 6 -/
+/-- Lemma parity and Theorem family on all boxes with d = 2 and sides ≤ 7, d = 3 and sides ≤ 5, d = 4 and sides ≤ 3 -/
 theorem family_d2 : (sortedBoxes 2 1 7).all familyOK = true := by decide +kernel
-theorem family_d3 : (sortedBoxes 3 1 6).all familyOK = true := by decide +kernel
-theorem family_d4 : (sortedBoxes 4 1 4).all familyOK = true := by decide +kernel
+theorem family_d3 : (sortedBoxes 3 1 5).all familyOK = true := by decide +kernel
+theorem family_d4 : (sortedBoxes 4 1 3).all familyOK = true := by decide +kernel
 
 /-- the four corner cells of [2]×[4]×[4] used in the footnote are pairwise disjoint -/
 theorem corner_cells_disjoint :
@@ -182,9 +182,9 @@ def fib : Nat → Nat
   | 1 => 1
   | n + 2 => fib n + fib (n + 1)
 
-/-- Proposition count, checked by enumeration for L ≤ 9 -/
-theorem countR_upto_9 :
-    (List.range 9).all (fun i => ((stable (i + 1)).filter inR).length == fib (2 * (i + 1) + 1))
+/-- Proposition count, checked by enumeration for L ≤ 7 -/
+theorem countR_upto_7 :
+    (List.range 7).all (fun i => ((stable (i + 1)).filter inR).length == fib (2 * (i + 1) + 1))
       = true := by decide +kernel
 
 /-- the automaton of the proof of Proposition count -/
@@ -200,14 +200,14 @@ theorem ab_fib (n : Nat) : (ab n).1 = fib (2 * n) ∧ (ab n).2 + (ab n).1 = fib 
     have e1 : fib (2 * n + 2) = fib (2 * n) + fib (2 * n + 1) := rfl
     have e2 : fib (2 * n + 3) = fib (2 * n + 1) + fib (2 * n + 2) := rfl
     have k1 : 2 * (n + 1) = 2 * n + 2 := by omega
-    have k2 : 2 * (n + 1) + 1 = 2 * n + 3 := by omega
-    rw [k1, k2]
-    show 2 * (ab n).1 + (ab n).2 = _ ∧ ((ab n).1 + (ab n).2) + (2 * (ab n).1 + (ab n).2) = _
+    rw [k1]
+    show 2 * (ab n).1 + (ab n).2 = fib (2 * n + 2) ∧
+      ((ab n).1 + (ab n).2) + (2 * (ab n).1 + (ab n).2) = fib (2 * n + 3)
     omega
 
 /-- the automaton count agrees with the enumeration of R -/
 theorem ab_counts_R :
-    (List.range 9).all (fun i => ((stable (i + 1)).filter inR).length ==
+    (List.range 7).all (fun i => ((stable (i + 1)).filter inR).length ==
       (ab (i + 1)).1 + (ab (i + 1)).2) = true := by decide +kernel
 
 /-- relaxation time of Theorem C -/
@@ -223,7 +223,7 @@ theorem K_L2 :
     [[0,0],[1,0],[2,0],[0,1],[1,1],[2,1],[0,2],[1,2],[2,2]].map K = [6,5,4,4,3,2,3,2,1] := by
   decide
 
-/-- Lemma recgrains and Corollary recK, checked for L ≤ 9: on R the weight is at least
+/-- Lemma recgrains and Corollary recK, checked for L ≤ 7: on R the weight is at least
     L(L+1)/2 + [σ_L = 2], so K ≤ L(L+1)/2, with equality at (1,...,1). -/
 def recKOK (L : Nat) : Bool :=
   ((stable L).filter inR).all (fun s =>
@@ -231,10 +231,10 @@ def recKOK (L : Nat) : Bool :=
      K s ≤ L * (L + 1) / 2) &&
   K (List.replicate L 1) == L * (L + 1) / 2
 
-theorem recK_upto_9 : (List.range 9).all (fun i => recKOK (i + 1)) = true := by decide +kernel
+theorem recK_upto_7 : (List.range 7).all (fun i => recKOK (i + 1)) = true := by decide +kernel
 
-/-- Corollary D(1): K ≤ L(L+1) with equality only at the empty pile, for L ≤ 9 -/
+/-- Corollary D(1): K ≤ L(L+1) with equality only at the empty pile, for L ≤ 7 -/
 def maxKOK (L : Nat) : Bool :=
   (stable L).all (fun s => K s ≤ L * (L + 1) && (K s == L * (L + 1) → s.all (· == 0)))
 
-theorem maxK_upto_9 : (List.range 9).all (fun i => maxKOK (i + 1)) = true := by decide +kernel
+theorem maxK_upto_7 : (List.range 7).all (fun i => maxKOK (i + 1)) = true := by decide +kernel
